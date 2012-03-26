@@ -1,217 +1,217 @@
 <!doctype html>  
 <html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    
+    <title>MIOP - webgl game in 48h</title>
+
+    <meta name="description" content="Game made for the global game jame 2012 - webgl game inspired by snake">
+    <meta name="author" content="Cedric Pinson">
+    
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <link rel="stylesheet" href="lib/zenburn.css">
+  </head>
+  
+  <body>
+    
+    <div id="reveal">
+      
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+	<section>
+	  <h2>Miop</h2>
+          <h2>Glogal Game Jam</h2>
+          <img src="qrcode.png">
+          <br><br>
+          <h3><a href="http://cedricpinson.com/ggj2012/"> The game</a> or <a href="http://youtu.be/atxI2BKLy_w">The video</a></h3>
+          <center><h3><a href="http://youtu.be/JsG03FCc1-M">Comit video</a></h3></center>
+	  <script>
+	    // Delicously hacky. Look away.
+	    if( navigator.userAgent.match( /(iPhone|iPad|iPod|Android)/i ) )
+	    document.write( '<p style="color: rgba(0,0,0,0.3); text-shadow: none;">('+'Tap to navigate'+')</p>' );
+	  </script>
+	</section>
 	
-	<head>
-		<meta charset="utf-8">
-		
-		<title>MIOP - webgl game in 48h</title>
+	<section>
+	  <h2>What is <a href="http://globalgamejam.org/">GGJ</a> ?</h2><br>
+          <ul>
+            <li><h3>Subject - snake</h3></li>
+            <li><h3>Team - at place</h3></li>
+            <li><h3>Game - 48h</h3></li>
+          </ul>
+	</section>
 
-		<meta name="description" content="Game made for the global game jame 2012 - webgl game inspired by snake">
-		<meta name="author" content="Cedric Pinson">
-		
-		<link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-		
-		<link rel="stylesheet" href="css/reset.css">
-		<link rel="stylesheet" href="css/main.css">
+	<section>
+          <img src="screen.png">
+        </section>
+	<section>
+	  <h2>Steps</h2>
+          <ul>
+            <li><a href="step_fri_23_00/"> Friday at 23h00 </a> </li>
+            <li><a href="step_fri_23_47/"> Friday at 23h47 </a> </li>
+            <li><a href="step_sat_01_52/"> Starday morning at 01h52 </a> </li>
+            <li><a href="step_sat_03_20/"> Starday morning at 03h20 </a> </li>
+            <li><a href="step_sat_13_30/"> Starday afternoon at 13h30 </a> </li>
+            <li><a href="step_sat_15_30/"> Starday afternoon at 15h30 </a> </li>
+            <li><a href="step_sat_18_18/"> Starday evening at 18h18 </a> </li>
+            <li><a href="step_sat_22_09/"> Starday evening at 22h09 </a> </li>
+            <li><a href="step_sat_23_55/"> Starday evening at 23h55 </a> </li>
+            <li><a href="step_sun_05_10/"> Sunday morning at 05h10 </a> </li>
+            <li><a href="step_sun_10_00/"> Sunday morning at 10h00 </a> </li>
+            <li><a href="step_sun_13_00/"> Sunday afternoon at 13h00 </a> </li>
+          </ul>
+	</section>
 
-		<link rel="stylesheet" href="lib/zenburn.css">
-	</head>
-	
-	<body>
-		
-		<div id="reveal">
-			
-			<!-- Any section element inside of this container is displayed as a slide -->
-			<div class="slides">
-				<section>
-					<h2>Miop</h2>
-                                        <h2>Glogal Game Jam</h2>
-                                        <img src="qrcode.png">
-                                        <br><br>
-                                        <h3><a href="http://cedricpinson.com/ggj2012/"> The game</a> or <a href="http://youtu.be/atxI2BKLy_w">The video</a></h3>
-                                        <center><h3><a href="http://youtu.be/JsG03FCc1-M">Comit video</a></h3></center>
-					<script>
-						// Delicously hacky. Look away.
-						if( navigator.userAgent.match( /(iPhone|iPad|iPod|Android)/i ) )
-						document.write( '<p style="color: rgba(0,0,0,0.3); text-shadow: none;">('+'Tap to navigate'+')</p>' );
-					</script>
-				</section>
-				
-				<section>
-					<h2>What is <a href="http://globalgamejam.org/">GGJ</a> ?</h2><br>
-<ul>
-<li><h3>Subject - snake</h3></li>
-<li><h3>Team - at place</h3></li>
-<li><h3>Game - 48h</h3></li>
-</ul>
-				</section>
+	<section>
+	  <h2>Eyes</h2>
+          <pre><code>UpdateCallbackBlinkEye.prototype = {
+              switchEye: function(node, t) {
+              var stateSet = node.getStateSet(); // get the material
+              var uniform = stateSet.getUniform('eye'); // get the uniform called eye
+              uniform.get()[0] = (uniform.get()[0] + 1)%getTotalEyes(); // increment eye index
+              uniform.dirty();  // tag it dirty
+              if (uniform.get()[0] === 0 || uniform.get()[0] === 3) { // eye open we trigger blinking a bit later
+              this.nextSwitch = t + (0.2+Math.random()*1.0); // random to avoid detection pattern
+              } else {
+              this.nextSwitch = t + 0.05; // intermediate eye frame
+              }
+              },
 
-				<section>
-                                  <img src="screen.png">
-                                </section>
-				<section>
-				  <h2>Steps</h2>
-<ul>
-<li><a href="step_fri_23_00/"> Friday at 23h00 </a> </li>
-<li><a href="step_fri_23_47/"> Friday at 23h47 </a> </li>
-<li><a href="step_sat_01_52/"> Starday morning at 01h52 </a> </li>
-<li><a href="step_sat_03_20/"> Starday morning at 03h20 </a> </li>
-<li><a href="step_sat_13_30/"> Starday afternoon at 13h30 </a> </li>
-<li><a href="step_sat_15_30/"> Starday afternoon at 15h30 </a> </li>
-<li><a href="step_sat_18_18/"> Starday evening at 18h18 </a> </li>
-<li><a href="step_sat_22_09/"> Starday evening at 22h09 </a> </li>
-<li><a href="step_sat_23_55/"> Starday evening at 23h55 </a> </li>
-<li><a href="step_sun_05_10/"> Sunday morning at 05h10 </a> </li>
-<li><a href="step_sun_10_00/"> Sunday morning at 10h00 </a> </li>
-<li><a href="step_sun_13_00/"> Sunday afternoon at 13h00 </a> </li>
-</ul>
-				</section>
+              update: function(node, nv) {
+              var t = nv.getFrameStamp().getSimulationTime();
 
-				<section>
-				  <h2>Eyes</h2>
-<pre><code>UpdateCallbackBlinkEye.prototype = {
-    switchEye: function(node, t) {
-        var stateSet = node.getStateSet(); // get the material
-        var uniform = stateSet.getUniform('eye'); // get the uniform called eye
-        uniform.get()[0] = (uniform.get()[0] + 1)%getTotalEyes(); // increment eye index
-        uniform.dirty();  // tag it dirty
-        if (uniform.get()[0] === 0 || uniform.get()[0] === 3) { // eye open we trigger blinking a bit later
-            this.nextSwitch = t + (0.2+Math.random()*1.0); // random to avoid detection pattern
-        } else {
-            this.nextSwitch = t + 0.05; // intermediate eye frame
-        }
-    },
+              if (this.nextSwitch === undefined) {
+              this.nextSwitch = t + 0.1;
+              }
 
-    update: function(node, nv) {
-        var t = nv.getFrameStamp().getSimulationTime();
+              if (t > this.nextSwitch) { // need to change eye position
+              this.switchEye(node, t);
+              }
+              return true;
+              }
+              };
+          </code></pre>
+	</section>
 
-        if (this.nextSwitch === undefined) {
-            this.nextSwitch = t + 0.1;
-        }
+	<section>
+	  <h2>Camera</h2>
+          <pre><code>
+              var FACTOR = 100;
+              var mtx = Target.getWorldMatrices();
+              var pos = [];
+              osg.Matrix.getTrans(mtx[0], pos);
+	      if (count === undefined) {
+	      count = PlayerMe.count+1 || 1;
+	      } else {
+	      count -= (count-(PlayerMe.count+1||1))/FACTOR;
+	      }
 
-        if (t > this.nextSwitch) { // need to change eye position
-            this.switchEye(node, t);
-        }
-        return true;
-    }
-};
-</code></pre>
-				</section>
+	      count = Math.min(count, 10);
 
-				<section>
-				  <h2>Camera</h2>
-<pre><code>
-                    var FACTOR = 100;
-                    var mtx = Target.getWorldMatrices();
-                    var pos = [];
-                    osg.Matrix.getTrans(mtx[0], pos);
-		    if (count === undefined) {
-		        count = PlayerMe.count+1 || 1;
-		    } else {
-		        count -= (count-(PlayerMe.count+1||1))/FACTOR;
-		    }
+              if (eye === undefined) {
+	      eye = [];
+              eye[0] = pos[0] - (20*PlayerMe.v[0]);
+              eye[1] = pos[1] - (20*PlayerMe.v[1]);
+              eye[2] = 10 + count*2;
+	      } else {
+              eye[0] -= (eye[0] - (pos[0] - ((10+count*2)*PlayerMe.v[0])))/FACTOR;
+              eye[1] -= (eye[1] - (pos[1] - ((10+count*2)*PlayerMe.v[1])))/FACTOR;
+	      eye[2] = (10 + count*2);
+	      }
 
-		    count = Math.min(count, 10);
+              var up = [0, 0, 1];
+              osg.Matrix.makeLookAt(eye,
+              pos,
+              up, 
+              inv);
+          </code></pre>
+        </section>				
+        <section>
+          <h2>Make shortcut everywhere</h2>
+          <ul>
+            <li>No complex lighting</li>
+            <li>Stylish instead of complex technique</li>
+            <li>Find workaround instead optmization</li>
+            <li>Animation very limited</li>
+            <li>Cheap shadow</li>
+          </ul>
+        </section>
 
-                    if (eye === undefined) {
-		        eye = [];
-                        eye[0] = pos[0] - (20*PlayerMe.v[0]);
-                        eye[1] = pos[1] - (20*PlayerMe.v[1]);
-                        eye[2] = 10 + count*2;
-		    } else {
-                        eye[0] -= (eye[0] - (pos[0] - ((10+count*2)*PlayerMe.v[0])))/FACTOR;
-                        eye[1] -= (eye[1] - (pos[1] - ((10+count*2)*PlayerMe.v[1])))/FACTOR;
-		        eye[2] = (10 + count*2);
-		    }
+        <section>
+          <h2>Fails</h2>
+          <ul>
+            <li>Tutorial</li>
+            <li>Multi player</li>
+            <li>Search too long for gameplay</li>
+          </ul>
+        </section>
 
-                    var up = [0, 0, 1];
-                    osg.Matrix.makeLookAt(eye,
-                                          pos,
-                                          up, 
-                                          inv);
-</code></pre>
-</section>				
-                                <section>
-                                  <h2>Make shortcut everywhere</h2>
-                                  <ul>
-                                    <li>No complex lighting</li>
-                                    <li>Stylish instead of complex technique</li>
-                                    <li>Find workaround instead optmization</li>
-                                    <li>Animation very limited</li>
-                                    <li>Cheap shadow</li>
-                                  </ul>
-                                </section>
+        <section>
+          <h2> Urls </h2>
+          <ul>
+            <li><a href="http://cedricpinson.com/ggj2012/"> The game</a></li>
+            <li><a href="http://youtu.be/atxI2BKLy_w"> Game screencast</a></li>
+            <li><a href="http://youtu.be/JsG03FCc1-M">Comit video</a></li>
+            <li><a href="https://github.com/cedricpinson/ggj2012a">Source on github</a></li>
+            <li><a href="http://osgjs.org">Framework osgjs</a></li>
+            <li><a href="https://github.com/cedricpinson/MiopSlides">Slides on github</a></li>
+          </ul>
+          
+        </section>
+      </div>
 
-                                <section>
-                                  <h2>Fails</h2>
-                                  <ul>
-                                    <li>Tutorial</li>
-                                    <li>Multi player</li>
-                                    <li>Search too long for gameplay</li>
-                                  </ul>
-                                </section>
+      <!-- The navigational controls UI -->
+      <aside class="controls">
+	<a class="left" href="#">&#x25C4;</a>
+	<a class="right" href="#">&#x25BA;</a>
+	<a class="up" href="#">&#x25B2;</a>
+	<a class="down" href="#">&#x25BC;</a>
+      </aside>
 
-                                <section>
-                                  <h2> Urls </h2>
-                                  <ul>
-                                    <li><a href="http://cedricpinson.com/ggj2012/"> The game</a></li>
-                                    <li><a href="http://youtu.be/atxI2BKLy_w"> Game screencast</a></li>
-                                    <li><a href="http://youtu.be/JsG03FCc1-M">Comit video</a></li>
-                                    <li><a href="https://github.com/cedricpinson/ggj2012a">Source on github</a></li>
-                                    <li><a href="http://osgjs.org">Framework osgjs</a></li>
-                                    <li><a href="https://github.com/cedricpinson/MiopSlides">Slides on github</a></li>
-                                  </ul>
-                                                                    
-                                </section>
-			</div>
+      <!-- Displays presentation progress, max value changes via JS to reflect # of slides -->
+      <div class="progress"><span></span></div>
+      
+    </div>
+    
+    <script src="js/reveal.js"></script>
+    <script src="lib/highlight.js"></script>
+    <script>
+      // Parse the query string into a key/value object
+      var query = {};
+      location.search.replace( /[A-Z0-9]+?=(\w*)/gi, function(a) {
+      query[ a.split( '=' ).shift() ] = a.split( '=' ).pop();
+      } );
 
-			<!-- The navigational controls UI -->
-			<aside class="controls">
-				<a class="left" href="#">&#x25C4;</a>
-				<a class="right" href="#">&#x25BA;</a>
-				<a class="up" href="#">&#x25B2;</a>
-				<a class="down" href="#">&#x25BC;</a>
-			</aside>
+      Reveal.initialize({
+      // Display controls in the bottom right corner
+      controls: true,
 
-			<!-- Displays presentation progress, max value changes via JS to reflect # of slides -->
-			<div class="progress"><span></span></div>
-			
-		</div>
-		
-		<script src="js/reveal.js"></script>
-		<script src="lib/highlight.js"></script>
-		<script>
-			// Parse the query string into a key/value object
-			var query = {};
-			location.search.replace( /[A-Z0-9]+?=(\w*)/gi, function(a) {
-				query[ a.split( '=' ).shift() ] = a.split( '=' ).pop();
-			} );
+      // Display a presentation progress bar
+      progress: true,
 
-			Reveal.initialize({
-				// Display controls in the bottom right corner
-				controls: true,
+      // If true; each slide will be pushed to the browser history
+      history: true,
 
-				// Display a presentation progress bar
-				progress: true,
+      // Flags if mouse wheel navigation should be enabled
+      mouseWheel: true,
 
-				// If true; each slide will be pushed to the browser history
-				history: true,
+      // Apply a 3D roll to links on hover
+      rollingLinks: true,
 
-				// Flags if mouse wheel navigation should be enabled
-				mouseWheel: true,
+      // UI style
+      theme: query.theme || 'default', // default/neon
 
-				// Apply a 3D roll to links on hover
-				rollingLinks: true,
+      // Transition style
+      transition: query.transition || 'default' // default/cube/page/concave/linear(2d)
+      });
 
-				// UI style
-				theme: query.theme || 'default', // default/neon
+      hljs.initHighlightingOnLoad();
+    </script>
 
-				// Transition style
-				transition: query.transition || 'default' // default/cube/page/concave/linear(2d)
-			});
-
-			hljs.initHighlightingOnLoad();
-		</script>
-
-	</body>
+  </body>
 </html>
